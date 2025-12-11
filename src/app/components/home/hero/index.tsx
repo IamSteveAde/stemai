@@ -17,24 +17,24 @@ export default function Hero() {
           {/* LEFT — TEXT AREA */}
           <div className="col-span-6 flex flex-col justify-center space-y-6" data-aos="fade-right">
 
-            <h1 className="md:text-[56px] text-4xl font-bold leading-[1.15] text-white">
+            <h1 className="md:text-[36px] text-xl font-bold leading-[1.15] text-white">
               Instant Insurance on Whatsapp,
-              <br className="hidden md:block" />
+              <br />
               Powered by AI.
             </h1>
 
-            <p className="text-lg text-slate-300 max-w-md leading-relaxed">
+            <p className="text-sm text-slate-300 max-w-md leading-relaxed">
               Get quotes, buy policies, file claims, and chat with your personal AI insurance assistant —
               all inside WhatsApp.
             </p>
 
             {/* CTA BUTTONS */}
             <div className="flex flex-wrap gap-4 mt-2">
-              <button className="px-8 py-4 bg-primary/50 text-white rounded-xl text-lg font-medium hover:bg-primary/10 transition">
+              <button className="px-8 py-4 bg-primary/50 text-white rounded-xl text-sm font-medium hover:bg-primary/10 transition">
                 Start on WhatsApp
               </button>
 
-              <button className="px-8 py-4 border border-white/40 text-white rounded-xl text-lg font-medium bg-white/5 hover:bg-white/10 hover:border-primary transition">
+              <button className="px-8 py-4 border border-white/40 text-white rounded-xl text-sm font-medium bg-white/5 hover:bg-white/10 hover:border-primary transition">
                 Learn More
               </button>
             </div>
