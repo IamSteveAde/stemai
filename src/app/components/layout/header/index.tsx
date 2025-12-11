@@ -14,14 +14,14 @@ export default function Header() {
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
-  // Sticky header detection
+  // Sticky detection
   useEffect(() => {
     const handleScroll = () => setSticky(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile on outside click
+  // Close mobile menu on outside click
   useEffect(() => {
     const handleClickOutside = (e: any) => {
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
@@ -45,23 +45,23 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
-        ${sticky 
-          ? "backdrop-blur-xl bg-white/85 border-b border-black/10 shadow-lg"
-          : "bg-transparent"
+        ${
+          sticky
+            ? "backdrop-blur-xl bg-white/85 border-b border-black/10 shadow-lg"
+            : "bg-transparent lg:bg-transparent bg-gradient-to-br from-[#001f3f] to-[#003b73]"
         }
       `}
     >
-      {/* Background glow only when NOT sticky */}
+      {/* Background glow only when NOT sticky (desktop only) */}
       {!sticky && (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none hidden lg:block">
           <div className="absolute top-0 left-20 w-60 h-60 bg-blue-300/20 blur-3xl rounded-full"></div>
           <div className="absolute top-0 right-20 w-60 h-60 bg-primary/25 blur-3xl rounded-full"></div>
         </div>
       )}
 
       <div className="relative z-20 container mx-auto max-w-screen-xl px-6 py-5 flex items-center justify-between">
-
-        {/* LOGO — STATIC COLOR (NO CHANGES) */}
+        {/* LOGO */}
         <Link href="/" className="flex items-center">
           <Image
             src={getImgPath("/images/logo/chuks.png")}
@@ -78,10 +78,11 @@ export default function Header() {
               key={item.href}
               href={item.href}
               className={`
-                text-base transition-all 
-                ${sticky 
-                  ? "text-black hover:text-primary" 
-                  : "text-white hover:text-primary"
+                text-base transition-all
+                ${
+                  sticky
+                    ? "text-black hover:text-primary"
+                    : "text-white hover:text-primary"
                 }
               `}
             >
@@ -90,15 +91,15 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* CTA BUTTON */}
+        {/* DESKTOP CTA */}
         <div className="hidden lg:flex">
           <a
             href="#"
-            className={`
-              px-6 py-3 rounded-full text-sm font-semibold transition
-              ${sticky 
-                ? "bg-primary text-white hover:bg-blue-700"
-                : "bg-white text-primary hover:bg-gray-200"
+            className={`px-6 py-3 rounded-full text-sm font-semibold transition
+              ${
+                sticky
+                  ? "bg-primary text-white hover:bg-blue-700"
+                  : "bg-white text-primary hover:bg-gray-200"
               }
             `}
           >
@@ -110,7 +111,11 @@ export default function Header() {
         <button
           onClick={() => setNavbarOpen(true)}
           className={`lg:hidden p-2 rounded-lg border backdrop-blur-md 
-            ${sticky ? "bg-black/10 border-black/20" : "bg-white/20 border-white/20"}
+            ${
+              sticky
+                ? "bg-black/10 border-black/20"
+                : "bg-white/20 border-white/20"
+            }
           `}
         >
           <Menu className={`w-6 h-6 ${sticky ? "text-black" : "text-white"}`} />
@@ -121,19 +126,20 @@ export default function Header() {
       <div
         ref={mobileMenuRef}
         className={`fixed top-0 right-0 h-full w-[75%] max-w-xs z-50 
-          bg-white/90 backdrop-blur-xl shadow-xl 
+          bg-gradient-to-br from-[#001f3f] to-[#003b73] text-white
+          backdrop-blur-xl shadow-xl 
           transition-transform duration-300
           ${navbarOpen ? "translate-x-0" : "translate-x-full"}
         `}
       >
         <div className="p-6 flex items-center justify-between">
-          <h2 className="text-lg font-bold text-black">Menu</h2>
+          <h2 className="text-lg font-bold text-white">Menu</h2>
 
           <button
             onClick={() => setNavbarOpen(false)}
-            className="p-2 rounded-lg hover:bg-black/5"
+            className="p-2 rounded-lg hover:bg-white/10"
           >
-            <X className="w-6 h-6 text-black" />
+            <X className="w-6 h-6 text-white" />
           </button>
         </div>
 
@@ -143,15 +149,24 @@ export default function Header() {
               key={item.href}
               href={item.href}
               onClick={() => setNavbarOpen(false)}
-              className="text-lg text-black hover:text-primary transition"
+              className={`
+                text-lg font-medium transition 
+                ${
+                  pathname === item.href
+                    ? "text-primary"
+                    : "text-white"
+                }
+                hover:text-primary
+              `}
             >
               {item.name}
             </a>
           ))}
 
+          {/* MOBILE CTA */}
           <a
             href="#"
-            className="mt-6 px-6 py-3 bg-primary text-white rounded-full text-center font-semibold hover:bg-blue-700 transition"
+            className="mt-6 px-6 py-3 bg-white text-primary rounded-full text-center font-semibold hover:bg-gray-200 transition"
           >
             Start on WhatsApp
           </a>
