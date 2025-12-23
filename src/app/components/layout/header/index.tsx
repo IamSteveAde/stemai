@@ -68,7 +68,7 @@ export default function Header() {
           <Image
             src={getImgPath("/images/logo/stem.svg")}
             alt="STEM Institute AI Logo"
-            width={250}
+            width={160}
             height={40}
             priority
           />
