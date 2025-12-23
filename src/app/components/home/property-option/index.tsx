@@ -1,69 +1,76 @@
 "use client";
 
-import { MessageCircle, ListChecks, Coins, ShieldCheck } from "lucide-react";
+import { Brain, MessageCircle, Clock, Award } from "lucide-react";
 
-export default function HowChuksAiWorks() {
-
-  const steps = [
-    {
-      title: "Start a Chat",
-      desc: "Message Chuks AI on WhatsApp — no app download needed.",
-      icon: () => <MessageCircle className="w-12 h-12 text-primary" />,
-    },
-    {
-      title: "Share Your Needs",
-      desc: "Tell the bot what insurance you're looking for: auto, health, travel, device & more.",
-      icon: () => <ListChecks className="w-12 h-12 text-primary" />,
-    },
-    {
-      title: "Get Instant Quotes",
-      desc: "Compare insurance plans from top providers in seconds.",
-      icon: () => <Coins className="w-12 h-12 text-primary" />,
-    },
-    {
-      title: "Buy or Claim in WhatsApp",
-      desc: "Purchase policies or file claims instantly — all inside WhatsApp.",
-      icon: () => <ShieldCheck className="w-12 h-12 text-primary" />,
-    },
-  ];
-
+export default function WhyItWorks() {
   return (
-    <section className="dark:bg-darkmode py-20" id="how">
-      <div className="container lg:max-w-screen-xl md:max-w-screen-md mx-auto px-4">
+    <section className="relative py-24 bg-[#0B1020] border-t border-white/5">
 
-        <h2 
-          className="text-4xl font-bold mb-12 text-midnight_text dark:text-white"
-          data-aos="fade-left"
-        >
-          How Chuks AI Works
-        </h2>
+      <div className="max-w-7xl mx-auto px-6">
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 lg:gap-8">
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-start"
-              data-aos="fade-up"
-              data-aos-delay={(index + 1) * 100}
-            >
-
-              <div className="p-4 border-2 rounded-lg border-border dark:border-dark_border mb-6 flex items-center justify-center">
-                {step.icon()}
-              </div>
-
-              <p className="text-[22px] font-semibold text-midnight_text dark:text-white mb-2">
-                {step.title}
-              </p>
-
-              <p className="text-base text-gray-500 dark:text-gray-300">
-                {step.desc}
-              </p>
-
-            </div>
-          ))}
+        {/* Section Header */}
+        <div className="max-w-2xl mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
+            Why STEM Institute AI Works
+          </h2>
+          <p className="mt-4 text-slate-300 leading-relaxed">
+            Built with intention. Designed around how people actually learn.
+          </p>
         </div>
 
+        {/* Feature Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <Feature
+            icon={<Brain size={26} />}
+            title="AI-Powered Personal Tutor"
+            text="An intelligent tutor that adapts to your pace and supports you throughout your learning journey."
+          />
+
+          <Feature
+            icon={<MessageCircle size={26} />}
+            title="100% WhatsApp-Native Learning"
+            text="Learn entirely inside WhatsApp—lessons, quizzes, projects, and feedback in one familiar place."
+          />
+
+          <Feature
+            icon={<Clock size={26} />}
+            title="5–10 Minute Daily Lessons"
+            text="Short, focused sessions designed for consistency without overwhelm."
+          />
+
+          <Feature
+            icon={<Award size={26} />}
+            title="Verified Digital Certificates"
+            text="Earn credible certificates you can share with schools, employers, and institutions."
+          />
+
+        </div>
       </div>
     </section>
+  );
+}
+
+function Feature({
+  icon,
+  title,
+  text,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition">
+      <div className="mb-4 text-emerald-400">
+        {icon}
+      </div>
+      <h3 className="text-lg font-semibold text-white mb-2">
+        {title}
+      </h3>
+      <p className="text-sm text-slate-300 leading-relaxed">
+        {text}
+      </p>
+    </div>
   );
 }

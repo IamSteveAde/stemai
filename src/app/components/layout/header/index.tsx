@@ -14,14 +14,13 @@ export default function Header() {
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
-  // Sticky detection — desktop only (>=1024px)
+  // Sticky detection — desktop only
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth >= 1024) {
-        setSticky(window.scrollY > 60);
+        setSticky(window.scrollY > 40);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -33,48 +32,45 @@ export default function Header() {
         setNavbarOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "How It Works", href: "#how" },
-    { name: "Features", href: "#features" },
-    { name: "Services", href: "#services" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Security", href: "#security" },
-    { name: "FAQ", href: "#faq" },
+    { name: "About", href: "#about" },
+    { name: "How Learning Works", href: "#how" },
+    { name: "Who It’s For", href: "#who" },
+    { name: "Get Started", href: "#get-started" },
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
-        
-        /* MOBILE ALWAYS GRADIENT */
-        bg-gradient-to-br from-[#001f3f] to-[#003b73]
-
-        /* DESKTOP: apply sticky style */
-        ${sticky ? "lg:bg-white/85 lg:border-b lg:border-black/10 lg:shadow-lg" : "lg:bg-transparent"}
+        ${
+          sticky
+            ? "bg-black/70 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.8)]"
+            : "bg-black/40 backdrop-blur-lg"
+        }
       `}
     >
-      {/* Desktop glow */}
+      {/* ===== SUBTLE ORBIT GLOWS ===== */}
       {!sticky && (
         <div className="absolute inset-0 pointer-events-none hidden lg:block">
-          <div className="absolute top-0 left-20 w-60 h-60 bg-blue-300/20 blur-3xl rounded-full"></div>
-          <div className="absolute top-0 right-20 w-60 h-60 bg-primary/25 blur-3xl rounded-full"></div>
+          <div className="absolute top-0 left-24 w-56 h-56 bg-emerald-500/15 blur-[120px] rounded-full" />
+          <div className="absolute top-0 right-24 w-56 h-56 bg-sky-400/15 blur-[120px] rounded-full" />
         </div>
       )}
 
-      <div className="relative z-20 container mx-auto max-w-screen-xl px-6 py-5 flex items-center justify-between">
+      <div className="relative z-20 max-w-screen-xl mx-auto px-6 py-5 flex items-center justify-between">
+
         {/* LOGO */}
         <Link href="/" className="flex items-center">
           <Image
-            src={getImgPath("/images/logo/chuks.png")}
-            alt="Chuks AI Logo"
-            width={150}
+            src={getImgPath("/images/logo/stem.svg")}
+            alt="STEM Institute AI Logo"
+            width={250}
             height={40}
+            priority
           />
         </Link>
 
@@ -84,10 +80,7 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className={`
-                text-base transition-all 
-                ${sticky ? "text-black hover:text-primary" : "text-white hover:text-primary"}
-              `}
+              className="text-sm font-medium text-slate-200 hover:text-emerald-400 transition"
             >
               {item.name}
             </a>
@@ -97,13 +90,9 @@ export default function Header() {
         {/* DESKTOP CTA */}
         <div className="hidden lg:flex">
           <a
-            href="https://api.whatsapp.com/send?phone=2348107942363"
-            className={`px-6 py-3 rounded-full text-sm font-semibold transition
-              ${sticky
-                ? "bg-primary text-white hover:bg-blue-700"
-                : "bg-white text-primary hover:bg-gray-200"
-              }
-            `}
+            href="https://api.whatsapp.com/send?text=START"
+            className="px-6 py-3 rounded-full text-sm font-semibold
+              bg-emerald-500 hover:bg-emerald-400 text-black transition"
           >
             Start on WhatsApp
           </a>
@@ -112,25 +101,25 @@ export default function Header() {
         {/* MOBILE MENU BUTTON */}
         <button
           onClick={() => setNavbarOpen(true)}
-          className="lg:hidden p-2 rounded-lg border border-white/30 bg-white/10 backdrop-blur-sm"
+          className="lg:hidden p-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur-md"
         >
           <Menu className="w-6 h-6 text-white" />
         </button>
       </div>
 
-      {/* MOBILE DRAWER (FULL GRADIENT) */}
+      {/* ===== MOBILE DRAWER ===== */}
       <div
         ref={mobileMenuRef}
-        className={`
-          fixed top-0 right-0 h-full w-[75%] max-w-xs z-50
-          bg-gradient-to-br from-[#001f3f] to-[#003b73]
-          text-white shadow-2xl
+        className={`fixed top-0 right-0 h-full w-[80%] max-w-sm z-50
+          bg-black/90 backdrop-blur-2xl text-white
           transition-transform duration-300
           ${navbarOpen ? "translate-x-0" : "translate-x-full"}
         `}
       >
-        <div className="p-6 flex items-center justify-between">
-          <h2 className="text-lg font-bold text-white">Menu</h2>
+        <div className="p-6 flex items-center justify-between border-b border-white/10">
+          <span className="text-sm font-semibold tracking-wider uppercase">
+            Menu
+          </span>
 
           <button
             onClick={() => setNavbarOpen(false)}
@@ -140,16 +129,18 @@ export default function Header() {
           </button>
         </div>
 
-        <nav className="flex flex-col gap-6 px-6">
+        <nav className="flex flex-col gap-8 px-6 py-10">
           {navLinks.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setNavbarOpen(false)}
-              className={`
-                text-lg font-medium transition
-                ${pathname === item.href ? "text-primary" : "text-white"}
-                hover:text-primary
+              className={`text-lg font-medium transition
+                ${
+                  pathname === item.href
+                    ? "text-emerald-400"
+                    : "text-slate-200 hover:text-emerald-400"
+                }
               `}
             >
               {item.name}
@@ -157,10 +148,10 @@ export default function Header() {
           ))}
 
           <a
-            href="https://api.whatsapp.com/send?phone=2348107942363"
-            className="mt-6 px-6 py-3 bg-white text-primary rounded-full text-center font-semibold hover:bg-gray-200 transition"
+            href="https://api.whatsapp.com/send?text=START"
+            className="mt-6 px-6 py-4 bg-emerald-500 text-black rounded-full text-center font-semibold hover:bg-emerald-400 transition"
           >
-            Start on WhatsApp
+            Start Learning on WhatsApp
           </a>
         </nav>
       </div>

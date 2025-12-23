@@ -1,112 +1,132 @@
 "use client";
 
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-export default function FAQ() {
-  const faqs = [
-    {
-      q: "How does the WhatsApp bot work?",
-      a: "Simply message Chuks AI on WhatsApp. The bot guides you through quotes, purchases, claims, and support — instantly.",
-    },
-    {
-      q: "Is it secure?",
-      a: "Yes. All messages are protected by WhatsApp’s end-to-end encryption plus our enterprise-grade security protocols.",
-    },
-    {
-      q: "What insurance can I buy?",
-      a: "You can purchase health, auto, travel, life, device insurance, and SME business protection.",
-    },
-    {
-      q: "How do I file a claim?",
-      a: "Start a chat with Chuks AI and select 'File a Claim'. The bot walks you through the entire process step-by-step.",
-    },
-    {
-      q: "Is the service free?",
-      a: "Yes. Chatting with Chuks AI is free. You only pay for the insurance plan you choose.",
-    },
-  ];
-
-  const [open, setOpen] = useState<number | null>(null);
-
+export default function WhyWhatsAppAndCTA() {
   return (
-    <section className="relative py-32 bg-[#f8fafc] overflow-hidden" id="faq">
+    <section className="relative bg-white py-40 overflow-hidden">
 
-      {/* --- LAYER 1: Soft floating orbs --- */}
-      <div className="absolute top-10 left-10 h-48 w-48 bg-primary/20 blur-3xl rounded-full opacity-40 animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 h-56 w-56 bg-blue-300/30 blur-3xl rounded-full opacity-40 animate-pulse delay-300"></div>
+      {/* ===== SUBTLE DECORATIVE ELEMENTS ===== */}
+      <div className="absolute -top-48 -right-48 w-[520px] h-[520px] rounded-full bg-emerald-100 blur-[200px]" />
+      <div className="absolute bottom-[-260px] -left-48 w-[520px] h-[520px] rounded-full bg-sky-100 blur-[200px]" />
 
-      {/* --- LAYER 2: Subtle AI grid pattern --- */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.06] bg-[url('/images/patterns/grid-light.svg')] bg-cover"></div>
+      <div className="relative max-w-7xl mx-auto px-6 space-y-40">
 
-      {/* --- LAYER 3: Earth rings --- */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.12]">
-        <svg viewBox="0 0 800 800" className="w-[950px] h-[950px]">
-          <circle cx="400" cy="400" r="140" stroke="#cbd5e1" strokeWidth="1" fill="none" />
-          <circle cx="400" cy="400" r="230" stroke="#e2e8f0" strokeWidth="1" fill="none" />
-          <circle cx="400" cy="400" r="320" stroke="#f1f5f9" strokeWidth="1" fill="none" />
-        </svg>
-      </div>
+        {/* ================= WHY WHATSAPP ================= */}
+        <div className="max-w-3xl" id="get-started">
 
-      {/* --- CONTENT --- */}
-      <div className="relative z-10 container mx-auto lg:max-w-screen-xl px-6">
-
-        {/* FAQ Heading */}
-        <div className="max-w-2xl mb-16">
-          <p className="text-sm uppercase tracking-[0.2em] text-primary mb-3">
-            FAQ
+          <p className="text-sm font-semibold tracking-[0.3em] uppercase text-emerald-600 mb-6">
+            Why WhatsApp
           </p>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-midnight_text mb-4">
-            Frequently Asked Questions
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-8">
+            Education Should Meet Learners
+            <br />
+            Where They Already Are
           </h2>
 
-          <p className="text-lg text-gray-600">
-            Everything you need to know about using Chuks AI for insurance.
+          <ul className="space-y-4 text-slate-700 text-lg max-w-xl">
+            <li>• Already installed on billions of phones</li>
+            <li>• Works efficiently on low data</li>
+            <li>• Familiar, simple, and accessible</li>
+            <li>• Removes technical barriers to education</li>
+          </ul>
+
+          <p className="mt-8 text-slate-700 text-lg max-w-xl">
+            Education should meet learners where they are—not force them to adapt.
           </p>
         </div>
 
-        {/* FAQ List */}
-        <div className="space-y-6 relative">
-          {faqs.map((item, index) => {
-            const isOpen = open === index;
+        {/* ================= GET STARTED ================= */}
+        <div className="grid lg:grid-cols-12 gap-20 items-start " >
 
-            return (
-              <div
-                key={index}
-                className="relative rounded-2xl border border-gray-200 bg-white/80 backdrop-blur-xl p-6 shadow-md 
-                           hover:shadow-xl transition-all duration-300 cursor-pointer group"
-                onClick={() => setOpen(isOpen ? null : index)}
+          {/* Steps */}
+          <div className="lg:col-span-7 space-y-10">
+
+            <p className="text-sm font-semibold tracking-[0.3em] uppercase text-emerald-600">
+              Get Started
+            </p>
+
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Get Started in 3 Simple Steps
+            </h3>
+
+            <div className="space-y-8 text-slate-700 text-lg">
+
+              <Step
+                number="01"
+                title="Save Our WhatsApp Number"
+                text="Add STEM Institute AI to your contacts."
+              />
+
+              <Step
+                number="02"
+                title='Send “START”'
+                text="Our AI tutor responds instantly."
+              />
+
+              <Step
+                number="03"
+                title="Begin Learning"
+                text="Your personalized STEM journey begins immediately."
+              />
+
+            </div>
+
+            
+
+          </div>
+
+          {/* CTA Card */}
+          <div className="lg:col-span-5">
+            <div className="bg-white border border-slate-200 rounded-3xl p-12 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.15)]">
+
+              <h4 className="text-2xl font-semibold text-slate-900 mb-4">
+                Start Learning Today
+              </h4>
+
+              <p className="text-slate-700 mb-8">
+                Everything you need to learn STEM—delivered through WhatsApp,
+                guided by AI, and built for real-world learning.
+              </p>
+
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl transition"
               >
-                {/* Glow hover accent */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/10 to-blue-300/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                Start on WhatsApp
+                <ArrowRight size={18} />
+              </a>
 
-                {/* Content */}
-                <div className="relative flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-midnight_text">
-                    {item.q}
-                  </h3>
+            </div>
+          </div>
 
-                  <ChevronDown
-                    className={`w-6 h-6 text-gray-500 transform transition-transform duration-300 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </div>
-
-                <div
-                  className={`relative overflow-hidden transition-all duration-300 ${
-                    isOpen ? "max-h-40 mt-4" : "max-h-0"
-                  }`}
-                >
-                  <p className="text-gray-600 leading-relaxed">{item.a}</p>
-                </div>
-              </div>
-            );
-          })}
         </div>
 
+       
       </div>
     </section>
+  );
+}
+
+function Step({
+  number,
+  title,
+  text,
+}: {
+  number: string;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="flex gap-6 items-start">
+      <div className="w-10 h-10 rounded-full bg-emerald-500 text-white font-bold flex items-center justify-center shadow">
+        {number}
+      </div>
+      <div>
+        <p className="font-semibold text-slate-900">{title}</p>
+        <p className="text-slate-700">{text}</p>
+      </div>
+    </div>
   );
 }

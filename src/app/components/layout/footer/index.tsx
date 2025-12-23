@@ -3,98 +3,109 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getImgPath } from "@/utils/pathUtils";
-import { MessageCircle, Instagram, Twitter, Linkedin } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#0d0f16] text-white pt-20 pb-10 overflow-hidden">
+    <footer className="relative bg-[#0D0F16] text-white pt-24 pb-12 overflow-hidden">
 
-      {/* Subtle ring pattern (very soft for dark mode) */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.06]">
+      {/* Subtle Orbit Pattern */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.05]">
         <svg viewBox="0 0 800 800" className="w-[1000px] h-[1000px]">
-          <circle cx="400" cy="400" r="150" stroke="#ffffff" strokeWidth="1" fill="none" />
-          <circle cx="400" cy="400" r="260" stroke="#ffffff" strokeWidth="1" fill="none" />
-          <circle cx="400" cy="400" r="360" stroke="#ffffff" strokeWidth="1" fill="none" />
+          <circle cx="400" cy="400" r="160" stroke="#ffffff" strokeWidth="1" fill="none" />
+          <circle cx="400" cy="400" r="280" stroke="#ffffff" strokeWidth="1" fill="none" />
+          <circle cx="400" cy="400" r="380" stroke="#ffffff" strokeWidth="1" fill="none" />
         </svg>
       </div>
 
-      <div className="relative z-10 container mx-auto max-w-screen-xl px-6">
+      <div className="relative z-10 max-w-screen-xl mx-auto px-6">
 
-        {/* Top Footer Content */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12 mb-14">
+        {/* ================= TOP FOOTER ================= */}
+        <div className="flex flex-col lg:flex-row justify-between gap-16 mb-20">
 
-          {/* Logo + blurb */}
+          {/* Brand */}
           <div className="max-w-sm">
             <Image
-              src={getImgPath("/images/logo/chukswhite.png")}
-              alt="Chuks AI Logo"
-              width={170}
+              src={getImgPath("/images/logo/stem.svg")}
+              alt="STEM Institute AI Logo"
+              width={180}
               height={50}
-              className="mb-5"
+              className="mb-6"
             />
 
             <p className="text-gray-400 leading-relaxed">
-              Your AI-powered WhatsApp insurance assistant—smart, fast, and always available to help you compare, buy, and claim.
+              STEM Institute AI is a WhatsApp-native learning institution
+              powered by AI—delivering STEM education through simple,
+              conversational learning.
             </p>
           </div>
 
-          {/* Footer navigation groups */}
-          <div className="flex flex-col sm:flex-row gap-14">
+          {/* Navigation */}
+          <div className="flex flex-col sm:flex-row gap-16">
 
-            {/* Company Section */}
+            {/* Explore */}
             <div>
-              <h4 className="text-white font-semibold mb-4 text-lg">Company</h4>
+              <h4 className="text-white font-semibold mb-5 text-lg">
+                Explore
+              </h4>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/about" className="text-gray-400 hover:text-primary transition">
-                    About
+                  <Link href="/#about" className="text-gray-400 hover:text-emerald-400 transition">
+                    About STEM Institute AI
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#how" className="text-gray-400 hover:text-primary transition">
-                    How it Works
+                  <Link href="/#how" className="text-gray-400 hover:text-emerald-400 transition">
+                    How Learning Works
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#services" className="text-gray-400 hover:text-primary transition">
-                    Services
+                  <Link href="/#who" className="text-gray-400 hover:text-emerald-400 transition">
+                    Who It’s For
                   </Link>
                 </li>
                 <li>
-                  <Link href="/policy" className="text-gray-400 hover:text-primary transition">
-                    Website Policies
+                  <Link href="/policy" className="text-gray-400 hover:text-emerald-400 transition">
+                    Policies & Privacy
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Contact / Connect */}
+            {/* Connect */}
             <div>
-              <h4 className="text-white font-semibold mb-4 text-lg">Connect</h4>
+              <h4 className="text-white font-semibold mb-5 text-lg">
+                Connect
+              </h4>
 
               <ul className="space-y-3">
                 <li>
-                  <a href="https://api.whatsapp.com/send?phone=2348107942363" className="flex items-center gap-2 text-gray-400 hover:text-primary transition">
+                  <a
+                    href="https://api.whatsapp.com/send?text=START"
+                    className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 transition"
+                  >
                     <MessageCircle className="w-5 h-5" />
-                    Chat on WhatsApp
+                    Start Learning on WhatsApp
                   </a>
                 </li>
               </ul>
-
-              
             </div>
 
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/10 my-10"></div>
+        {/* ================= DIVIDER ================= */}
+        <div className="border-t border-white/10 my-10" />
 
-        {/* Bottom Row */}
-        <div className="flex flex-col lg:flex-row justify-between items-center text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Chuks AI. All rights reserved.</p>
+        {/* ================= BOTTOM ================= */}
+        <div className="flex flex-col lg:flex-row justify-between items-center text-gray-500 text-sm gap-4">
+          <p>
+            © {new Date().getFullYear()} STEM Institute AI. All rights reserved.
+          </p>
 
-          
+          <p className="text-gray-500">
+            Learning made conversational.
+          </p>
         </div>
 
       </div>
