@@ -37,6 +37,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
+    { name: "Home", href: "/home" },
     { name: "About", href: "#about" },
     { name: "How Learning Works", href: "#how" },
     { name: "Who It’s For", href: "#who" },
@@ -108,14 +109,17 @@ export default function Header() {
       </div>
 
       {/* ===== MOBILE DRAWER ===== */}
-      <div
-        ref={mobileMenuRef}
-        className={`fixed top-0 right-0 h-full w-[80%] max-w-sm z-50
-          bg-black/90 backdrop-blur-2xl text-white
-          transition-transform duration-300
-          ${navbarOpen ? "translate-x-0" : "translate-x-full"}
-        `}
-      >
+    {/* ===== MOBILE DRAWER ===== */}
+<div
+  ref={mobileMenuRef}
+  className={`fixed top-0 right-0 h-full w-[80%] max-w-sm z-50
+    bg-black
+    text-white
+    transition-transform duration-300
+    ${navbarOpen ? "translate-x-0" : "translate-x-full"}
+  `}
+>
+
         <div className="p-6 flex items-center justify-between border-b border-white/10">
           <span className="text-sm font-semibold tracking-wider uppercase">
             Menu
