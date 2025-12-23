@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#0B1020] pt-28 md:pt-40 pb-32">
+    <section className="relative overflow-hidden bg-[#0B1020] pt-35 md:pt-40 pb-32">
 
       {/* Soft AI Glows */}
       <div className="absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full bg-emerald-500/25 blur-[160px]" />
