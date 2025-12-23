@@ -37,7 +37,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/home" },
+    { name: "Home", href: "/#" },
     { name: "About", href: "#about" },
     { name: "How Learning Works", href: "#how" },
     { name: "Who It’s For", href: "#who" },

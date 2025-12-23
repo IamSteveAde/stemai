@@ -5,16 +5,16 @@ import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#0B1020] pt-20 md:pt-40 pb-32">
+    <section className="relative overflow-hidden bg-[#0B1020] pt-28 md:pt-100 pb-62">
 
       {/* Soft AI Glows */}
-      <div className="absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full bg-emerald-500/25 blur-[160px]" />
+      <div className="absolute -top-32 -left-32 h-[420] w-[420px] rounded-full bg-emerald-500/25 blur-[160px]" />
       <div className="absolute bottom-[-200px] right-[-120px] h-[420px] w-[420px] rounded-full bg-sky-400/25 blur-[160px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-14 items-center">
 
         {/* ================= LEFT: TEXT ================= */}
-        <div className="lg:col-span-6 space-y-6 text-left">
+        <div className="lg:col-span-6 space-y-6 py-[50px] text-left">
 
           <h1 className="text-4xl md:text-6xl font-black leading-tight text-white">
             A Full STEM School
